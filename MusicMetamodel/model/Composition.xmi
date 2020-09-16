@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<musicMetamodel:Composition
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:musicMetamodel="http://www.example.org/musicMetamodel"
+    xsi:schemaLocation="http://www.example.org/musicMetamodel musicMetamodel.ecore"
+    name="Test">
+  <staff staffNumber="1">
+    <clef/>
+    <time beat="4"
+        beatType="4"/>
+    <elements
+        xsi:type="musicMetamodel:Measure"
+        measureNumber="1">
+      <note/>
+      <note
+          name="d"/>
+    </elements>
+    <elements
+        xsi:type="musicMetamodel:Measure"
+        measureNumber="2">
+      <note
+          name="e"/>
+      <note
+          name="f"/>
+    </elements>
+  </staff>
+  <staff staffNumber="2">
+    <clef type="bass"/>
+    <time beat="4"
+        beatType="4"/>
+    <elements
+        xsi:type="musicMetamodel:Measure"
+        measureNumber="1">
+      <note
+          name="g"/>
+      <note
+          name="a"/>
+    </elements>
+    <elements
+        xsi:type="musicMetamodel:Measure"
+        measureNumber="2">
+      <repetition/>
+      <note
+          name="b"/>
+      <note/>
+    </elements>
+  </staff>
+</musicMetamodel:Composition>

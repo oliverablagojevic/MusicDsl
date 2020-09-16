@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="musicMetamodel" nsURI="http://www.example.org/musicMetamodel"
+    nsPrefix="musicMetamodel">
+  <eAnnotations source="http://www.eclipse.org/OCL/Import">
+    <details key="ecore" value="http://www.eclipse.org/emf/2002/Ecore"/>
+  </eAnnotations>
+  <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+    <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="settingDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EEnum" name="RestType">
+    <eLiterals name="whole"/>
+    <eLiterals name="half" value="1"/>
+    <eLiterals name="quarter" value="2"/>
+    <eLiterals name="eighth" value="3"/>
+    <eLiterals name="sixteenth" value="4"/>
+    <eLiterals name="thirtysecond" value="5"/>
+    <eLiterals name="sixtyfourth" value="6"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="RepetitionType">
+    <eLiterals name="left"/>
+    <eLiterals name="right" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="AccidentalType">
+    <eLiterals name="sharp"/>
+    <eLiterals name="flat" value="1"/>
+    <eLiterals name="natural" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="OrnamentType">
+    <eLiterals name="slide"/>
+    <eLiterals name="glissando" value="1"/>
+    <eLiterals name="aciaccatura" value="2"/>
+    <eLiterals name="appoggiatura" value="3"/>
+    <eLiterals name="turn" value="4"/>
+    <eLiterals name="mordent" value="5"/>
+    <eLiterals name="trill" value="6"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="NoteType">
+    <eLiterals name="whole"/>
+    <eLiterals name="half" value="1"/>
+    <eLiterals name="quarter" value="2"/>
+    <eLiterals name="eighth" value="3"/>
+    <eLiterals name="sixteenth" value="4"/>
+    <eLiterals name="thirtysecond" value="5"/>
+    <eLiterals name="sixtyfourth" value="6"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="NoteName">
+    <eLiterals name="C"/>
+    <eLiterals name="D" value="1"/>
+    <eLiterals name="E" value="2"/>
+    <eLiterals name="F" value="3"/>
+    <eLiterals name="G" value="4"/>
+    <eLiterals name="A" value="5"/>
+    <eLiterals name="B" value="6"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ArticulationType">
+    <eLiterals name="detached"/>
+    <eLiterals name="legato" value="1"/>
+    <eLiterals name="staccato" value="2"/>
+    <eLiterals name="portato" value="3"/>
+    <eLiterals name="tenuto" value="4"/>
+    <eLiterals name="marcato" value="5"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ClefType">
+    <eLiterals name="violin"/>
+    <eLiterals name="bass" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Composition">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="author" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instrument" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tonality" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="soundTempo" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="staff" lowerBound="1" upperBound="2"
+        eType="#//Staff" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Staff">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="StaffNumber"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="StaffNumber" value="self.staffNumber = 1 or self.staffNumber = 2"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="staffNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="clef" lowerBound="1" eType="#//Clef"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="time" lowerBound="1" eType="#//TimeSignature"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
+        eType="#//StaffElement" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="key" eType="#//Key" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Clef">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//ClefType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TimeSignature">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="LessThanTwelve LessThanEight"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="LessThanTwelve" value="self.beat &lt; 12"/>
+      <details key="LessThanEight" value="self.beatType &lt; 8"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="beat" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="beatType" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StaffElement" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Measure" eSuperTypes="#//StaffElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="BiggerThanZero"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="BiggerThanZero" value="self.measureNumber > 0"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="measureNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="repetition" upperBound="-1"
+        eType="#//Repetition" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="note" upperBound="-1" eType="#//Note"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rest" upperBound="-1" eType="#//Rest"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Rest" eSuperTypes="#//StaffElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//RestType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Repetition" eSuperTypes="#//StaffElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//RepetitionType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Note" eSuperTypes="#//StaffElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="OctaveLessThan VoiceNumber fermataTrueImpliesDotFalse dotTrueImpliesFermataFalse"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="OctaveLessThan" value="self.octave &lt;= 8"/>
+      <details key="VoiceNumber" value="self.voice = 1 or self.voice = 2"/>
+      <details key="fermataTrueImpliesDotFalse" value="self.fermata = true implies self.dot = false"/>
+      <details key="dotTrueImpliesFermataFalse" value="self.dot = true implies self.fermata = false"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="#//NoteName"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//NoteType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="duration" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="octave" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="voice" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dynamic" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fermata" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dot" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="accidental" eType="#//AccidentalType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="notation" upperBound="-1"
+        eType="#//Notation" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lyrics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="chord" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Notation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="articulation" eType="#//ArticulationType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ornament" eType="#//OrnamentType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="slur" eType="#//SlurType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Key">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="KeyLessThan KeyBiggerThan"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="KeyLessThan" value="self.fifths &lt;= 7"/>
+      <details key="KeyBiggerThan" value="self.fifths >= -7"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fifths" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="SlurType">
+    <eLiterals name="start"/>
+    <eLiterals name="stop" value="1"/>
+  </eClassifiers>
+</ecore:EPackage>

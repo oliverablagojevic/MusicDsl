@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/MusicMetamodel/src-gen" creationIcons="false"
+    editDirectory="/MusicMetamodel.edit/src-gen" editorDirectory="/MusicMetamodel.editor/src-gen"
+    modelPluginID="MusicMetamodel" modelName="MusicMetamodel" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    codeFormatting="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0"
+    copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>musicMetamodel.ecore</foreignModel>
+  <testsDirectory xsi:nil="true"/>
+  <genPackages prefix="MusicMetamodel" disposableProviderFactory="true" ecorePackage="musicMetamodel.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="musicMetamodel.ecore#//RestType">
+      <genEnumLiterals ecoreEnumLiteral="musicMetamodel.ecore#//RestType/whole"/>
+      <genEnumLiterals ecoreEnumLiteral="musicMetamodel.ecore#//RestType/half"/>
+      <genEnumLiterals ecoreEnumLiteral="musicMetamodel.ecore#//RestType/quarter"/>
+      <genEnumLiterals ecoreEnumLiteral="musicMetamodel.ecore#//RestType/eighth"/>
+      <genEnumLiterals ecoreEnumLiteral="musicMetamodel.ecore#//RestType/sixteenth"/>
+      <genEnumLiterals ecoreEnumLiteral="musicMetamodel.ecore#//RestType/thirtysecond"/>
+      <genEnumLiterals ecoreEnumLiteral="musicMetamodel.ecore#//RestType/sixtyfourth"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="musicMetamodel.ecore#//RepetitionType">
+      <genEnumLiterals ecoreEnumLiteral="musicMetamodel.ecore#//RepetitionType/left"/>
+      <genEnumLiterals ecoreEnumLiteral="musicMetamodel.ecore#//RepetitionType/right"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="musicMetamodel.ecore#//AccidentalType">
+      <genEnumLiterals ecoreEnumLiteral="musicMetamodel.ecore#//AccidentalType/sharp"/>
+      <genEnumLiterals ecoreEnumLiteral="musicMetamodel.ecore#//AccidentalType/flat"/>
+      <genEnumLiterals ecoreEnumLiteral="musicMetamodel.ecore#//AccidentalType/natural"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="musicMetamodel.ecore#//OrnamentType">
+      <genEnumLiterals ecoreEnumLiteral="musicMetamodel.ecore#//OrnamentType/slide"/>
+      <genEnumLiterals ecoreEnumLiteral="musicMetamodel.ecore#//OrnamentType/glissando"/>
+      <genEnumLiterals ecoreEnumLiteral="musicMetamodel.ecore#//OrnamentType/aciaccatura"/>
+      <genEnumLiterals ecoreEnumLiteral="musicMetamodel.ecore#//OrnamentType/appoggiatura"/>
+      <genEnumLiterals ecoreEnumLiteral="musicMetamodel.ecore#//OrnamentType/turn"/>
+      <genEnumLiterals ecoreEnumLiteral="musicMetamodel.ecore#//OrnamentType/mordent"/>
+      <genEnumLiterals ecoreEnumLiteral="musicMetamodel.ecore#//OrnamentType/trill"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="musicMetamodel.ecore#//NoteType">
+      <genEnumLiterals ecoreEnumLiteral="musicMetamodel.ecore#//NoteType/whole"/>
+      <genEnumLiterals ecoreEnumLiteral="musicMetamodel.ecore#//NoteType/half"/>
+      <genEnumLiterals ecoreEnumLiteral="musicMetamodel.ecore#//NoteType/quarter"/>
+      <genEnumLiterals ecoreEnumLiteral="musicMetamodel.ecore#//NoteType/eighth"/>
+      <genEnumLiterals ecoreEnumLiteral="musicMetamodel.ecore#//NoteType/sixteenth"/>
+      <genEnumLiterals ecoreEnumLiteral="musicMetamodel.ecore#//NoteType/thirtysecond"/>
+      <genEnumLiterals ecoreEnumLiteral="musicMetamodel.ecore#//NoteType/sixtyfourth"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="musicMetamodel.ecore#//NoteName">
+      <genEnumLiterals ecoreEnumLiteral="musicMetamodel.ecore#//NoteName/C"/>
+      <genEnumLiterals ecoreEnumLiteral="musicMetamodel.ecore#//NoteName/D"/>
+      <genEnumLiterals ecoreEnumLiteral="musicMetamodel.ecore#//NoteName/E"/>
+      <genEnumLiterals ecoreEnumLiteral="musicMetamodel.ecore#//NoteName/F"/>
+      <genEnumLiterals ecoreEnumLiteral="musicMetamodel.ecore#//NoteName/G"/>
+      <genEnumLiterals ecoreEnumLiteral="musicMetamodel.ecore#//NoteName/A"/>
+      <genEnumLiterals ecoreEnumLiteral="musicMetamodel.ecore#//NoteName/B"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="musicMetamodel.ecore#//ArticulationType">
+      <genEnumLiterals ecoreEnumLiteral="musicMetamodel.ecore#//ArticulationType/detached"/>
+      <genEnumLiterals ecoreEnumLiteral="musicMetamodel.ecore#//ArticulationType/legato"/>
+      <genEnumLiterals ecoreEnumLiteral="musicMetamodel.ecore#//ArticulationType/staccato"/>
+      <genEnumLiterals ecoreEnumLiteral="musicMetamodel.ecore#//ArticulationType/portato"/>
+      <genEnumLiterals ecoreEnumLiteral="musicMetamodel.ecore#//ArticulationType/tenuto"/>
+      <genEnumLiterals ecoreEnumLiteral="musicMetamodel.ecore#//ArticulationType/marcato"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="musicMetamodel.ecore#//ClefType">
+      <genEnumLiterals ecoreEnumLiteral="musicMetamodel.ecore#//ClefType/violin"/>
+      <genEnumLiterals ecoreEnumLiteral="musicMetamodel.ecore#//ClefType/bass"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="musicMetamodel.ecore#//SlurType">
+      <genEnumLiterals ecoreEnumLiteral="musicMetamodel.ecore#//SlurType/start"/>
+      <genEnumLiterals ecoreEnumLiteral="musicMetamodel.ecore#//SlurType/stop"/>
+    </genEnums>
+    <genClasses ecoreClass="musicMetamodel.ecore#//Composition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute musicMetamodel.ecore#//Composition/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute musicMetamodel.ecore#//Composition/author"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute musicMetamodel.ecore#//Composition/instrument"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute musicMetamodel.ecore#//Composition/tonality"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute musicMetamodel.ecore#//Composition/soundTempo"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference musicMetamodel.ecore#//Composition/staff"/>
+    </genClasses>
+    <genClasses ecoreClass="musicMetamodel.ecore#//Staff">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute musicMetamodel.ecore#//Staff/staffNumber"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference musicMetamodel.ecore#//Staff/clef"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference musicMetamodel.ecore#//Staff/time"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference musicMetamodel.ecore#//Staff/elements"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference musicMetamodel.ecore#//Staff/key"/>
+    </genClasses>
+    <genClasses ecoreClass="musicMetamodel.ecore#//Clef">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute musicMetamodel.ecore#//Clef/type"/>
+    </genClasses>
+    <genClasses ecoreClass="musicMetamodel.ecore#//TimeSignature">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute musicMetamodel.ecore#//TimeSignature/beat"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute musicMetamodel.ecore#//TimeSignature/beatType"/>
+    </genClasses>
+    <genClasses ecoreClass="musicMetamodel.ecore#//StaffElement"/>
+    <genClasses ecoreClass="musicMetamodel.ecore#//Measure">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute musicMetamodel.ecore#//Measure/measureNumber"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference musicMetamodel.ecore#//Measure/repetition"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference musicMetamodel.ecore#//Measure/note"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference musicMetamodel.ecore#//Measure/rest"/>
+    </genClasses>
+    <genClasses ecoreClass="musicMetamodel.ecore#//Rest">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute musicMetamodel.ecore#//Rest/type"/>
+    </genClasses>
+    <genClasses ecoreClass="musicMetamodel.ecore#//Repetition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute musicMetamodel.ecore#//Repetition/type"/>
+    </genClasses>
+    <genClasses ecoreClass="musicMetamodel.ecore#//Note">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute musicMetamodel.ecore#//Note/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute musicMetamodel.ecore#//Note/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute musicMetamodel.ecore#//Note/duration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute musicMetamodel.ecore#//Note/octave"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute musicMetamodel.ecore#//Note/voice"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute musicMetamodel.ecore#//Note/dynamic"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute musicMetamodel.ecore#//Note/fermata"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute musicMetamodel.ecore#//Note/dot"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute musicMetamodel.ecore#//Note/accidental"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference musicMetamodel.ecore#//Note/notation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute musicMetamodel.ecore#//Note/lyrics"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute musicMetamodel.ecore#//Note/chord"/>
+    </genClasses>
+    <genClasses ecoreClass="musicMetamodel.ecore#//Notation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute musicMetamodel.ecore#//Notation/articulation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute musicMetamodel.ecore#//Notation/ornament"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute musicMetamodel.ecore#//Notation/slur"/>
+    </genClasses>
+    <genClasses ecoreClass="musicMetamodel.ecore#//Key">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute musicMetamodel.ecore#//Key/fifths"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
