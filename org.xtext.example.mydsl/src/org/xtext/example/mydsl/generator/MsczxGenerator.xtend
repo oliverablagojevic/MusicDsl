@@ -4,6 +4,7 @@ import musicMetamodel.Composition
 import musicMetamodel.Measure
 import musicMetamodel.Note
 import musicMetamodel.NoteName
+import musicMetamodel.SlurType
 
 class MsczxGenerator {
 	Composition composition;
@@ -126,8 +127,8 @@ class MsczxGenerator {
           </Text>
         </VBox>
       «FOR n: s.elements.filter(Measure)»
-       «IF n.measureNumber == 1»
-      <Measure>
+       «IF n.measureNumber == 1 && s.staffNumber == 1»
+       <Measure>
         <voice>
           <KeySig>
             <accidental>«composition.staff.get(0).key.getFifths()»</accidental>
@@ -141,15 +142,360 @@ class MsczxGenerator {
             <followText>1</followText>
             <text><sym>metNoteQuarterUp</sym> = «composition.soundTempo»</text>
             </Tempo>
-          «generateNote()»
+          «FOR note: n.note»      
+            <Chord>
+          «IF note.dot == true»
+             <dots>1</dots>
+          «ENDIF»
+             <durationType>«note.type»</durationType>
+             <Lyrics>
+              <text>«note.lyrics»</text>
+             </Lyrics>
+             <Note>
+          «FOR a: note.notation»
+          	«IF a.slur !== null»
+            	«IF a.slur==SlurType.START»
+             <Spanner type="Tie">
+              <Tie>
+              </Tie>
+             <next>
+              <location>
+               <fractions>1/8</fractions>
+              </location>
+              </next>
+             </Spanner>
+                 «ENDIF»
+              «IF a.slur==SlurType.STOP»
+              <Spanner type="Tie">
+               <prev>
+                <location>
+                 <fractions>-1/8</fractions>
+                </location>
+                </prev>
+               </Spanner>
+              «ENDIF»
+             «ENDIF»
+          «ENDFOR»
+         «IF note.octave == 1 && note.name == NoteName.A»
+         		<pitch>33</pitch>
+         «ELSEIF note.octave == 2 && note.name == NoteName.A»
+         <		pitch>45</pitch>
+         «ELSEIF note.octave == 3 && note.name == NoteName.A»
+         		<pitch>57</pitch>
+         «ELSEIF note.octave == 4 && note.name == NoteName.A»
+         		<pitch>69</pitch>
+         «ELSEIF note.octave == 5 && note.name == NoteName.A»
+         		<pitch>81</pitch>
+         «ELSEIF note.octave == 6 && note.name == NoteName.A»
+         		<pitch>93/pitch>
+         «ELSEIF note.octave == 7 && note.name == NoteName.A»
+         		<pitch>105</pitch>
+         «ELSEIF note.octave == 8 && note.name == NoteName.A»
+         		<pitch>117</pitch>
+         «ENDIF» 
+         «IF note.octave == 1 && note.name == NoteName.B»
+         		<pitch>35</pitch>
+         		«ELSEIF note.octave == 2 && note.name == NoteName.B»
+         		<pitch>47</pitch>
+         «ELSEIF note.octave == 3 && note.name == NoteName.B»
+         		<pitch>59</pitch>
+         «ELSEIF note.octave == 4 && note.name == NoteName.B»
+         		<pitch>71</pitch>
+         «ELSEIF note.octave == 5 && note.name == NoteName.B»
+         		<pitch>83</pitch>
+         «ELSEIF note.octave == 6 && note.name == NoteName.B»
+        		<pitch>95/pitch>
+                         «ELSEIF note.octave == 7 && note.name == NoteName.B»
+                <pitch>107</pitch>
+                         «ELSEIF note.octave == 8 && note.name == NoteName.B»
+                <pitch>119</pitch>
+                         «ENDIF»
+                         «IF note.octave == 1 && note.name == NoteName.C»
+                <pitch>24</pitch>
+                         «ELSEIF note.octave == 2 && note.name == NoteName.C»
+                <pitch>36</pitch>
+                         «ELSEIF note.octave == 3 && note.name == NoteName.C»
+                <pitch>48</pitch>
+                         «ELSEIF note.octave == 4 && note.name == NoteName.C»
+                <pitch>60</pitch>
+                         «ELSEIF note.octave == 5 && note.name == NoteName.C»
+                <pitch>72</pitch>
+                         «ELSEIF note.octave == 6 && note.name == NoteName.C»
+                         <pitch>84/pitch>
+                         «ELSEIF note.octave == 7 && note.name == NoteName.C»
+                         <pitch>96</pitch>
+                         «ELSEIF note.octave == 8 && note.name == NoteName.C»
+                         <pitch>108</pitch>
+                         «ENDIF»
+                         «IF note.octave == 1 && note.name == NoteName.D»
+                         <pitch>26</pitch>
+                         «ELSEIF note.octave == 2 && note.name == NoteName.D»
+                         <pitch>38</pitch>
+                         «ELSEIF note.octave == 3 && note.name == NoteName.D»
+                         <pitch>50</pitch>
+                         «ELSEIF note.octave == 4 && note.name == NoteName.D»
+                         <pitch>62</pitch>
+                         «ELSEIF note.octave == 5 && note.name == NoteName.D»
+                     <pitch>74</pitch>
+                         «ELSEIF note.octave == 6 && note.name == NoteName.D»
+                     <pitch>86/pitch>
+                         «ELSEIF note.octave == 7 && note.name == NoteName.D»
+                     <pitch>98</pitch>
+                         «ELSEIF note.octave == 8 && note.name == NoteName.D»
+                     <pitch>110</pitch>
+                         «ENDIF»
+                         «IF note.octave == 1 && note.name == NoteName.E»
+                     <pitch>28</pitch>
+                         «ELSEIF note.octave == 2 && note.name == NoteName.E»
+                     <pitch>40</pitch>
+                         «ELSEIF note.octave == 3 && note.name == NoteName.E»
+                     <pitch>52</pitch>
+                         «ELSEIF note.octave == 4 && note.name == NoteName.E»
+                     <pitch>64</pitch>
+                         «ELSEIF note.octave == 5 && note.name == NoteName.E»
+                     <pitch>76</pitch>
+                         «ELSEIF note.octave == 6 && note.name == NoteName.E»
+                     <pitch>88</pitch>
+                         «ELSEIF note.octave == 7 && note.name == NoteName.E»
+                     <pitch>100</pitch>
+                         «ELSEIF note.octave == 8 && note.name == NoteName.E»
+                     <pitch>112</pitch>
+                         «ENDIF»
+                         «IF note.octave == 1 && note.name == NoteName.F»
+                     <pitch>29</pitch>
+                         «ELSEIF note.octave == 2 && note.name == NoteName.F»
+                     <pitch>41</pitch>
+                         «ELSEIF note.octave == 3 && note.name == NoteName.F»
+                     <pitch>53</pitch>
+                         «ELSEIF note.octave == 4 && note.name == NoteName.F»
+                     <pitch>65</pitch>
+                         «ELSEIF note.octave == 5 && note.name == NoteName.F»
+                     <pitch>77</pitch>
+                         «ELSEIF note.octave == 6 && note.name == NoteName.F»
+                     <pitch>89/pitch>
+                         «ELSEIF note.octave == 7 && note.name == NoteName.F»
+                     <pitch>101</pitch>
+                         «ELSEIF note.octave == 8 && note.name == NoteName.F»
+                     <pitch>113</pitch>
+                         «ENDIF»
+                         «IF note.octave == 1 && note.name == NoteName.G»
+                     <pitch>31</pitch>
+                         «ELSEIF note.octave == 2 && note.name == NoteName.G»
+                     <pitch>43</pitch>
+                         «ELSEIF note.octave == 3 && note.name == NoteName.G»
+                     <pitch>55</pitch>
+                         «ELSEIF note.octave == 4 && note.name == NoteName.G»
+                     <pitch>67</pitch>
+                         «ELSEIF note.octave == 5 && note.name == NoteName.G»
+                     <pitch>79</pitch>
+                         «ELSEIF note.octave == 6 && note.name == NoteName.G»
+                     <pitch>91/pitch>
+                         «ELSEIF note.octave == 7 && note.name == NoteName.G»
+                     <pitch>103</pitch>
+                         «ELSEIF note.octave == 8 && note.name == NoteName.G»
+                     <pitch>115</pitch>
+                         «ENDIF» 
+                         «IF note.name == NoteName.A»
+                     <tpc>13</tpc>
+                         «ELSEIF note.name == NoteName.B»
+                     <tpc>14</tpc>
+                         «ELSEIF note.name == NoteName.C»
+                     <tpc>15</tpc>
+                         «ELSEIF note.name == NoteName.D»
+                     <tpc>16</tpc>
+                         «ELSEIF note.name == NoteName.E»
+                     <tpc>17</tpc>
+                         «ELSEIF note.name == NoteName.F»
+                     <tpc>18</tpc>
+                         «ELSEIF note.name == NoteName.G»
+                     <tpc>19</tpc>
+                         «ENDIF»                                                                                                                                 
+                     </Note>
+                    </Chord>
+              «ENDFOR»
         </voice>
         </Measure>
         «ELSE»
-        <Measure>
+       <Measure>
         <voice>
-          «generateNote()»
+        «FOR rest: n.rest»  
+          <Rest>
+           <durationType>«rest.type»</durationType>
+          </Rest>
+         «ENDFOR» 
+          «FOR note: n.note»      
+                    <Chord>
+           «IF note.dot == true»
+                     <dots>1</dots>
+           «ENDIF»
+                     <durationType>«note.type»</durationType>
+                      <Lyrics>
+                        <text>«note.lyrics»</text>
+                      </Lyrics>
+                    <Note>
+                    «FOR a: note.notation»
+                    «IF a.slur !== null»
+                      «IF a.slur==SlurType.START»
+                      <Spanner type="Tie">
+                       <Tie>
+                       </Tie>
+                       <next>
+                       <location>
+                         <fractions>1/8</fractions>
+                       </location>
+                       </next>
+                      </Spanner>
+                      «ENDIF»
+                      «IF a.slur==SlurType.STOP»
+                      <Spanner type="Tie">
+                      <prev>
+                      <location>
+                      <fractions>-1/8</fractions>
+                       </location>
+                      </prev>
+                     </Spanner>
+                      «ENDIF»
+                      «ENDIF»
+                      «ENDFOR»                    
+                         «IF note.octave == 1 && note.name == NoteName.A»
+                     <pitch>33</pitch>
+                         «ELSEIF note.octave == 2 && note.name == NoteName.A»
+                     <pitch>45</pitch>
+                         «ELSEIF note.octave == 3 && note.name == NoteName.A»
+                     <pitch>57</pitch>
+                         «ELSEIF note.octave == 4 && note.name == NoteName.A»
+                     <pitch>69</pitch>
+                         «ELSEIF note.octave == 5 && note.name == NoteName.A»
+                     <pitch>81</pitch>
+                         «ELSEIF note.octave == 6 && note.name == NoteName.A»
+                     <pitch>93/pitch>
+                         «ELSEIF note.octave == 7 && note.name == NoteName.A»
+                     <pitch>105</pitch>
+                         «ELSEIF note.octave == 8 && note.name == NoteName.A»
+                     <pitch>117</pitch>
+                         «ENDIF» 
+                         «IF note.octave == 1 && note.name == NoteName.B»
+                     <pitch>35</pitch>
+                         «ELSEIF note.octave == 2 && note.name == NoteName.B»
+                     <pitch>47</pitch>
+                         «ELSEIF note.octave == 3 && note.name == NoteName.B»
+                     <pitch>59</pitch>
+                         «ELSEIF note.octave == 4 && note.name == NoteName.B»
+                     <pitch>71</pitch>
+                         «ELSEIF note.octave == 5 && note.name == NoteName.B»
+                     <pitch>83</pitch>
+                         «ELSEIF note.octave == 6 && note.name == NoteName.B»
+                     <pitch>95/pitch>
+                         «ELSEIF note.octave == 7 && note.name == NoteName.B»
+                     <pitch>107</pitch>
+                         «ELSEIF note.octave == 8 && note.name == NoteName.B»
+                     <pitch>119</pitch>
+                         «ENDIF»
+                         «IF note.octave == 1 && note.name == NoteName.C»
+                     <pitch>24</pitch>
+                         «ELSEIF note.octave == 2 && note.name == NoteName.C»
+                     <pitch>36</pitch>
+                         «ELSEIF note.octave == 3 && note.name == NoteName.C»
+                     <pitch>48</pitch>
+                         «ELSEIF note.octave == 4 && note.name == NoteName.C»
+                     <pitch>60</pitch>
+                         «ELSEIF note.octave == 5 && note.name == NoteName.C»
+                     <pitch>72</pitch>
+                         «ELSEIF note.octave == 6 && note.name == NoteName.C»
+                     <pitch>84/pitch>
+                         «ELSEIF note.octave == 7 && note.name == NoteName.C»
+                     <pitch>96</pitch>
+                         «ELSEIF note.octave == 8 && note.name == NoteName.C»
+                     <pitch>108</pitch>
+                         «ENDIF»
+                         «IF note.octave == 1 && note.name == NoteName.D»
+                     <pitch>26</pitch>
+                         «ELSEIF note.octave == 2 && note.name == NoteName.D»
+                     <pitch>38</pitch>
+                         «ELSEIF note.octave == 3 && note.name == NoteName.D»
+                     <pitch>50</pitch>
+                         «ELSEIF note.octave == 4 && note.name == NoteName.D»
+                     <pitch>62</pitch>
+                         «ELSEIF note.octave == 5 && note.name == NoteName.D»
+                     <pitch>74</pitch>
+                         «ELSEIF note.octave == 6 && note.name == NoteName.D»
+                         <pitch>86/pitch>
+                         «ELSEIF note.octave == 7 && note.name == NoteName.D»
+                         <pitch>98</pitch>
+                         «ELSEIF note.octave == 8 && note.name == NoteName.D»
+                         <pitch>110</pitch>
+                         «ENDIF»
+                         «IF note.octave == 1 && note.name == NoteName.E»
+                         <pitch>28</pitch>
+                         «ELSEIF note.octave == 2 && note.name == NoteName.E»
+                         <pitch>40</pitch>
+                         «ELSEIF note.octave == 3 && note.name == NoteName.E»
+                         <pitch>52</pitch>
+                         «ELSEIF note.octave == 4 && note.name == NoteName.E»
+                         <pitch>64</pitch>
+                         «ELSEIF note.octave == 5 && note.name == NoteName.E»
+                         <pitch>76</pitch>
+                         «ELSEIF note.octave == 6 && note.name == NoteName.E»
+                         <pitch>88</pitch>
+                         «ELSEIF note.octave == 7 && note.name == NoteName.E»
+                         <pitch>100</pitch>
+                         «ELSEIF note.octave == 8 && note.name == NoteName.E»
+                         <pitch>112</pitch>
+                         «ENDIF»
+                         «IF note.octave == 1 && note.name == NoteName.F»
+                         <pitch>29</pitch>
+                         «ELSEIF note.octave == 2 && note.name == NoteName.F»
+                         <pitch>41</pitch>
+                         «ELSEIF note.octave == 3 && note.name == NoteName.F»
+                         <pitch>53</pitch>
+                         «ELSEIF note.octave == 4 && note.name == NoteName.F»
+                         <pitch>65</pitch>
+                         «ELSEIF note.octave == 5 && note.name == NoteName.F»
+                         <pitch>77</pitch>
+                         «ELSEIF note.octave == 6 && note.name == NoteName.F»
+                         <pitch>89/pitch>
+                         «ELSEIF note.octave == 7 && note.name == NoteName.F»
+                         <pitch>101</pitch>
+                         «ELSEIF note.octave == 8 && note.name == NoteName.F»
+                         <pitch>113</pitch>
+                         «ENDIF»
+                         «IF note.octave == 1 && note.name == NoteName.G»
+                         <pitch>31</pitch>
+                         «ELSEIF note.octave == 2 && note.name == NoteName.G»
+                         <pitch>43</pitch>
+                         «ELSEIF note.octave == 3 && note.name == NoteName.G»
+                         <pitch>55</pitch>
+                         «ELSEIF note.octave == 4 && note.name == NoteName.G»
+                         <pitch>67</pitch>
+                         «ELSEIF note.octave == 5 && note.name == NoteName.G»
+                         <pitch>79</pitch>
+                         «ELSEIF note.octave == 6 && note.name == NoteName.G»
+                         <pitch>91/pitch>
+                         «ELSEIF note.octave == 7 && note.name == NoteName.G»
+                         <pitch>103</pitch>
+                         «ELSEIF note.octave == 8 && note.name == NoteName.G»
+                         <pitch>115</pitch>
+                         «ENDIF» 
+                         «IF note.name == NoteName.A»
+                         <tpc>13</tpc>
+                         «ELSEIF note.name == NoteName.B»
+                         <tpc>14</tpc>
+                         «ELSEIF note.name == NoteName.C»
+                         <tpc>15</tpc>
+                         «ELSEIF note.name == NoteName.D»
+                         <tpc>16</tpc>
+                         «ELSEIF note.name == NoteName.E»
+                         <tpc>17</tpc>
+                         «ELSEIF note.name == NoteName.F»
+                         <tpc>18</tpc>
+                         «ELSEIF note.name == NoteName.G»
+                         <tpc>19</tpc>
+                         «ENDIF»                                                                                                                                 
+                     </Note>
+                    </Chord>
+              «ENDFOR»
          </voice>  
-         </Measure>     
+        </Measure>     
         «ENDIF»
         «ENDFOR»
       </Staff>
@@ -160,150 +506,7 @@ class MsczxGenerator {
     private def generateNote() '''
     «FOR s: composition.staff»
     «FOR n: s.elements.filter(Measure)»
-    «FOR note: n.note»      
-          <Chord>
-           <durationType>«note.type»</durationType>
-            <Lyrics>
-              <text>«note.lyrics»</text>
-            </Lyrics>
-          <Note>
-               «IF note.octave == 1 && note.name == NoteName.A»
-           <pitch>33</pitch>
-               «ELSEIF note.octave == 2 && note.name == NoteName.A»
-           <pitch>45</pitch>
-               «ELSEIF note.octave == 3 && note.name == NoteName.A»
-           <pitch>57</pitch>
-               «ELSEIF note.octave == 4 && note.name == NoteName.A»
-           <pitch>69</pitch>
-               «ELSEIF note.octave == 5 && note.name == NoteName.A»
-           <pitch>81</pitch>
-               «ELSEIF note.octave == 6 && note.name == NoteName.A»
-           <pitch>93/pitch>
-               «ELSEIF note.octave == 7 && note.name == NoteName.A»
-           <pitch>105</pitch>
-               «ELSEIF note.octave == 8 && note.name == NoteName.A»
-           <pitch>117</pitch>
-               «ENDIF» 
-               «IF note.octave == 1 && note.name == NoteName.B»
-           <pitch>35</pitch>
-               «ELSEIF note.octave == 2 && note.name == NoteName.B»
-           <pitch>47</pitch>
-               «ELSEIF note.octave == 3 && note.name == NoteName.B»
-           <pitch>59</pitch>
-               «ELSEIF note.octave == 4 && note.name == NoteName.B»
-           <pitch>71</pitch>
-               «ELSEIF note.octave == 5 && note.name == NoteName.B»
-           <pitch>83</pitch>
-               «ELSEIF note.octave == 6 && note.name == NoteName.B»
-           <pitch>95/pitch>
-               «ELSEIF note.octave == 7 && note.name == NoteName.B»
-           <pitch>107</pitch>
-               «ELSEIF note.octave == 8 && note.name == NoteName.B»
-           <pitch>119</pitch>
-               «ENDIF»
-               «IF note.octave == 1 && note.name == NoteName.C»
-           <pitch>24</pitch>
-               «ELSEIF note.octave == 2 && note.name == NoteName.C»
-           <pitch>36</pitch>
-               «ELSEIF note.octave == 3 && note.name == NoteName.C»
-           <pitch>48</pitch>
-               «ELSEIF note.octave == 4 && note.name == NoteName.C»
-           <pitch>60</pitch>
-               «ELSEIF note.octave == 5 && note.name == NoteName.C»
-           <pitch>72</pitch>
-               «ELSEIF note.octave == 6 && note.name == NoteName.C»
-           <pitch>84/pitch>
-               «ELSEIF note.octave == 7 && note.name == NoteName.C»
-           <pitch>96</pitch>
-               «ELSEIF note.octave == 8 && note.name == NoteName.C»
-           <pitch>108</pitch>
-               «ENDIF»
-               «IF note.octave == 1 && note.name == NoteName.D»
-           <pitch>26</pitch>
-               «ELSEIF note.octave == 2 && note.name == NoteName.D»
-           <pitch>38</pitch>
-               «ELSEIF note.octave == 3 && note.name == NoteName.D»
-           <pitch>50</pitch>
-               «ELSEIF note.octave == 4 && note.name == NoteName.D»
-           <pitch>62</pitch>
-               «ELSEIF note.octave == 5 && note.name == NoteName.D»
-           <pitch>74</pitch>
-               «ELSEIF note.octave == 6 && note.name == NoteName.D»
-           <pitch>86/pitch>
-               «ELSEIF note.octave == 7 && note.name == NoteName.D»
-           <pitch>98</pitch>
-               «ELSEIF note.octave == 8 && note.name == NoteName.D»
-           <pitch>110</pitch>
-               «ENDIF»
-               «IF note.octave == 1 && note.name == NoteName.E»
-           <pitch>28</pitch>
-               «ELSEIF note.octave == 2 && note.name == NoteName.E»
-           <pitch>40</pitch>
-               «ELSEIF note.octave == 3 && note.name == NoteName.E»
-           <pitch>52</pitch>
-               «ELSEIF note.octave == 4 && note.name == NoteName.E»
-           <pitch>64</pitch>
-               «ELSEIF note.octave == 5 && note.name == NoteName.E»
-           <pitch>76</pitch>
-               «ELSEIF note.octave == 6 && note.name == NoteName.E»
-           <pitch>88</pitch>
-               «ELSEIF note.octave == 7 && note.name == NoteName.E»
-           <pitch>100</pitch>
-               «ELSEIF note.octave == 8 && note.name == NoteName.E»
-           <pitch>112</pitch>
-               «ENDIF»
-               «IF note.octave == 1 && note.name == NoteName.F»
-           <pitch>29</pitch>
-               «ELSEIF note.octave == 2 && note.name == NoteName.F»
-           <pitch>41</pitch>
-               «ELSEIF note.octave == 3 && note.name == NoteName.F»
-           <pitch>53</pitch>
-               «ELSEIF note.octave == 4 && note.name == NoteName.F»
-           <pitch>65</pitch>
-               «ELSEIF note.octave == 5 && note.name == NoteName.F»
-           <pitch>77</pitch>
-               «ELSEIF note.octave == 6 && note.name == NoteName.F»
-           <pitch>89/pitch>
-               «ELSEIF note.octave == 7 && note.name == NoteName.F»
-           <pitch>101</pitch>
-               «ELSEIF note.octave == 8 && note.name == NoteName.F»
-           <pitch>113</pitch>
-               «ENDIF»
-               «IF note.octave == 1 && note.name == NoteName.G»
-           <pitch>31</pitch>
-               «ELSEIF note.octave == 2 && note.name == NoteName.G»
-           <pitch>43</pitch>
-               «ELSEIF note.octave == 3 && note.name == NoteName.G»
-           <pitch>55</pitch>
-               «ELSEIF note.octave == 4 && note.name == NoteName.G»
-           <pitch>67</pitch>
-               «ELSEIF note.octave == 5 && note.name == NoteName.G»
-           <pitch>79</pitch>
-               «ELSEIF note.octave == 6 && note.name == NoteName.G»
-           <pitch>91/pitch>
-               «ELSEIF note.octave == 7 && note.name == NoteName.G»
-           <pitch>103</pitch>
-               «ELSEIF note.octave == 8 && note.name == NoteName.G»
-           <pitch>115</pitch>
-               «ENDIF» 
-               «IF note.name == NoteName.A»
-           <tpc>13</tpc>
-               «ELSEIF note.name == NoteName.B»
-           <tpc>14</tpc>
-               «ELSEIF note.name == NoteName.C»
-           <tpc>15</tpc>
-               «ELSEIF note.name == NoteName.D»
-           <tpc>16</tpc>
-               «ELSEIF note.name == NoteName.E»
-           <tpc>17</tpc>
-               «ELSEIF note.name == NoteName.F»
-           <tpc>18</tpc>
-               «ELSEIF note.name == NoteName.G»
-           <tpc>19</tpc>
-               «ENDIF»                                                                                                                                 
-           </Note>
-          </Chord>
-    «ENDFOR»
+    
     «ENDFOR»
     «ENDFOR»
 '''	
