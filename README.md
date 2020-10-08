@@ -13,3 +13,6 @@ Technologies used:<br/>
 • general purpose OCL language to define model constraints;<br/>
 • Xtext framework to create textual concrete syntax;<br/>
 • Xtend programing language for generators.<br/>
+
+
+![Metamodel](https://github.com/oliverablagojevic/MusicDsl/blob/master/MusicMetamodel/musicMetamodel.jpg?raw=true "MusicDsl metamodel")
