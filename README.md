@@ -1,4 +1,4 @@
-# MusicDsl (Master thesis project)
+# MusicDsl [Master thesis project, scientific discipline: Domain Specific Modeling and Languages]
 ## Domain-specific language for sheet music modeling. 
 Created domain-specific language simplifies the work with softwares for music composing and makes writing sheet music much easier.
 
